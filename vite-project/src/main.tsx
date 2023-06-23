@@ -1,0 +1,25 @@
+/*
+ * @Author: czqczqzzzzzz(czq)
+ * @Email: tenchenzhengqing@qq.com
+ * @Date: 2023-06-23 16:19:13
+ * @LastEditors: 陈正清MacPro
+ * @LastEditTime: 2023-06-23 17:54:16
+ * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/main.tsx
+ * @Description: 整个项目的入口文件
+ * 
+ * Copyright (c) by czqczqzzzzzz(czq), All Rights Reserved.
+ */
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+// 全局引入reset-css 样式初始化一般放在最前
+import 'reset-css'
+// UI框架的样式
+
+// 组件的样式
+import App from './App.tsx'
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)

@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-23 16:19:13
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-06-23 17:54:16
+ * @LastEditTime: 2023-06-23 18:22:50
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/main.tsx
  * @Description: 整个项目的入口文件
  * 
@@ -15,7 +15,11 @@ import ReactDOM from 'react-dom/client'
 import 'reset-css'
 // UI框架的样式
 
+// 全局样式
+import './assets/styles/global.scss'
+
 // 组件的样式
+
 import App from './App.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

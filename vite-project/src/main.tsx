@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-23 16:19:13
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-06-24 14:44:41
+ * @LastEditTime: 2023-06-24 18:52:07
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/main.tsx
  * @Description: 整个项目的入口文件
  * 
@@ -20,10 +20,11 @@ import '@/assets/styles/global.scss'
 
 // 组件的样式
 
-import App from './App.tsx'
+// import App from './App.tsx'
+import Router from '@/router';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <Router />
   </React.StrictMode>,
 )

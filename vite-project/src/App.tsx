@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-23 16:19:13
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-06-24 16:26:37
+ * @LastEditTime: 2023-06-24 18:08:39
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/App.tsx
  * @Description: 所有组件的父组件App
  * 
@@ -13,7 +13,6 @@ import { useState } from 'react'
 import Comp1 from './components/Comp1'
 import Comp2 from './components/Comp2'
 import { Button } from 'antd'
-import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
 import { FastBackwardOutlined } from '@ant-design/icons'
 
 function App() {

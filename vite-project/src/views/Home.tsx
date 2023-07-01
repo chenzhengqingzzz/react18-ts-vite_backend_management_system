@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-24 18:15:11
  * @LastEditors: 陈正清macbook pro
- * @LastEditTime: 2023-07-01 13:18:52
+ * @LastEditTime: 2023-07-01 14:01:09
  * @FilePath: /react18-ts-vite_backend_management_system/vite-project/src/views/Home.tsx
  * @Description: Home首页组件
  *
@@ -18,8 +18,8 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu } from "antd";
-import { log } from "console";
 import React, { useState } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -54,20 +54,19 @@ const items: MenuItem[] = [
   getItem("Files", "9", <FileOutlined />),
 ];
 
-/**
- * @description: 点击侧边菜单栏的点击事件回调
- * @param {*} e 事件对象
- * @return {*}
- */
-const menuClick = (e: {key: string}) => {
-  console.log(e);
-  
-  // 点击跳转到对应的路由
-
-}
-
 const Home: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigateTo = useNavigate();
+
+  /**
+   * @description: 点击侧边菜单栏的点击事件回调
+   * @param {*} e 事件对象
+   * @return {*}
+   */
+  const menuClick = (e: { key: string }) => {
+    // 点击跳转到对应的路由 编程式导航跳转 需要用到useNavigate这个Hook
+    navigateTo(e.key)
+  };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -105,6 +104,10 @@ const Home: React.FC = () => {
           style={{ margin: "16px 16px 0" }}
         >
           {/* 页面展示部分 根据路由变动 */}
+          {/* s【!!!!重点】设置占位符展示窗口
+             注意：嵌套路由的占位符展示窗口需要用Outlet组件，这里和根路由的展示有所区别 
+             */ }
+          <Outlet/>
         </Content>
         {/* 右边底部 */}
         <Footer style={{ textAlign: "center", padding: 0, lineHeight: "48px" }}>

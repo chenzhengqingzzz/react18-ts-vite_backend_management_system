@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-06 12:10:07
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-06 14:35:47
+ * @LastEditTime: 2023-07-06 16:20:52
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/components/MainMenu/index.tsx
  * @Description: 公用组件MainMenu，页面左侧主菜单
  *
@@ -19,7 +19,7 @@ import {
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -75,9 +75,14 @@ const items: MenuItem[] = [
         icon: <FileOutlined />
     }
 ]
-
+ 
 const MainMenu: React.FC = () => {
     const navigateTo = useNavigate();
+    const currentRouteObj = useLocation()
+    // console.log(currentRouteObj);
+    //如果发现加载两次，这是开发环境下才会生产环
+    // 境就不会了，在main.tsx把严格，模式标签去掉就不会了。至于为什么react要它加载两次详情见：
+    // https://blog.csdn.net/HYHhmbb/article/details/125973790
 
     /**
      * @description: 点击侧边菜单栏的点击事件回调
@@ -108,7 +113,8 @@ const MainMenu: React.FC = () => {
     return (
         <Menu
             theme="dark"
-            defaultSelectedKeys={["/page1"]}
+            // 表示当前的样式所在的选中项 通过key传递
+            defaultSelectedKeys={[currentRouteObj.pathname]}
             mode="inline"
             // 菜单项的数据
             items={items}

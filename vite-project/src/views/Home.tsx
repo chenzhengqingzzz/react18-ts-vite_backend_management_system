@@ -2,9 +2,9 @@
  * @Author: czqczqzzzzzz(czq)
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-24 18:15:11
- * @LastEditors: 陈正清macbook pro
- * @LastEditTime: 2023-07-01 14:01:09
- * @FilePath: /react18-ts-vite_backend_management_system/vite-project/src/views/Home.tsx
+ * @LastEditors: 陈正清MacPro
+ * @LastEditTime: 2023-07-05 17:06:00
+ * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/views/Home.tsx
  * @Description: Home首页组件
  *
  * Copyright (c) by czqczqzzzzzz(czq), All Rights Reserved.
@@ -42,12 +42,12 @@ function getItem(
 const items: MenuItem[] = [
   getItem("Option 1", "/page1", <PieChartOutlined />),
   getItem("Option 2", "/page2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
+  getItem("User", "page3", <UserOutlined />, [
     getItem("Tom", "3"),
     getItem("Bill", "4"),
     getItem("Alex", "5"),
   ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
+  getItem("Team", "page4", <TeamOutlined />, [
     getItem("Team 1", "6"),
     getItem("Team 2", "8"),
   ]),
@@ -56,6 +56,7 @@ const items: MenuItem[] = [
 
 const Home: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+
   const navigateTo = useNavigate();
 
   /**
@@ -68,6 +69,20 @@ const Home: React.FC = () => {
     navigateTo(e.key)
   };
 
+  /**
+   * @description: 展开和关闭某项菜单的时候执行回调
+   * @param {Array} keys 记录了当前被展开项目的key的数组
+   * @return {*}
+   */
+  const handleMenuOpenChange = (keys: string[]) => {
+    console.log(keys);
+    // 把这个数组修改成openKeys存入的东西 我们只需要一项展开
+    setOpenKeys([keys[keys.length - 1]])
+  }
+
+  // 定义控制当前展开项目的state，这个数组决定哪一项展开里面存啥我们就把key存进去
+  const [openKeys, setOpenKeys] = useState([''])
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* 左侧侧边栏 */}
@@ -79,10 +94,14 @@ const Home: React.FC = () => {
         <div className="logo" />
         <Menu
           theme="dark"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["/page1"]}
           mode="inline"
           items={items}
           onClick={menuClick}
+          // 某项菜单展开和回收的事件
+          onOpenChange={handleMenuOpenChange}
+          // 当前展开的菜单项key数组
+          openKeys={openKeys}
         />
       </Sider>
       {/* 右边内容 */}

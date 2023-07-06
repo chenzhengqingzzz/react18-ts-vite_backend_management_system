@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-06 12:10:07
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-06 16:20:52
+ * @LastEditTime: 2023-07-06 19:24:00
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/components/MainMenu/index.tsx
  * @Description: 公用组件MainMenu，页面左侧主菜单
  *
@@ -55,8 +55,8 @@ const items: MenuItem[] = [
         ]
     },
     {
-        label: 'Team',
-        key: '栏目4',
+        label: '栏目4',
+        key: 'page4',
         icon: <TeamOutlined />,
         children: [
             {
@@ -107,8 +107,31 @@ const MainMenu: React.FC = () => {
         setOpenKeys([keys[keys.length - 1]]);
     };
 
+    // 拿着currentRouteObj.pathname和items数组的每一项的children的key进行对比
+    // 如果相等，就让它上一级的key给到openKeys数组中，作为初始值
+    // 这个变量记录了我们在刷新之前选中的那个openKey
+    let beforeReloadOpenKey: string = ''
+
+    /**
+     * @description: 判断路由和每一个item里面存放的key是否相等，我们将会用在下面的find方法中
+     * @param {object} item 被遍历的每一个可能会有key的item 
+     * @return {Boolean}
+     */
+    const findKey = (item: {key: string}): Boolean => {
+        return item.key === currentRouteObj.pathname
+    }
+
+    // 循环遍历items中的每一项的children中的key属性 是否和我们的pathname相等
+    items.forEach(item => {
+        const children = item!.children
+        // 判断是否有children这个属性、判断children这个属性是否为空、判断children里面是否与当前路由相等
+        if (children && children.length > 0 && children.find(findKey)) {
+            beforeReloadOpenKey = item!.key as string
+        }
+    });
+
     // 定义控制当前展开项目的state，这个数组决定哪一项展开里面存啥我们就把key存进去
-    const [openKeys, setOpenKeys] = useState([""]);
+    const [openKeys, setOpenKeys] = useState([beforeReloadOpenKey]);
 
     return (
         <Menu

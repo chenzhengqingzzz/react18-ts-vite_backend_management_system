@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-24 20:13:33
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-06 14:54:07
+ * @LastEditTime: 2023-07-06 18:18:44
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/router/index.tsx
  * @Description: 路由器
  * 
@@ -22,6 +22,7 @@ const About = lazy(() => import('@/views/About'))
 const Page1 = lazy(() => import('@/views/Page1'))
 const Page2 = lazy(() => import('@/views/Page2'))
 const Page301 = lazy(() => import('@/views/Page301'))
+const Page401 = lazy(() => import('@/views/Page401'))
 
 /**
  * @description: 将懒加载的组件外层包裹一个React.Suspense标签 用来展示加载中的组件
@@ -59,6 +60,10 @@ const routes = [
             {
                 path: '/page3/page301',
                 element: withLazyLoadComponent(<Page301/>)
+            },
+            {
+                path: '/page4/page401',
+                element: withLazyLoadComponent(<Page401/>)
             }
         ]
     },

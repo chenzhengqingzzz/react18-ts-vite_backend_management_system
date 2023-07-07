@@ -1,14 +1,39 @@
 // 覆盖原生antd的样式来满足我们自己的需求
 .loginboxless {
+
     // 控制表单元素 
-    .ant-input, .ant-input-password {
+    .ant-input,
+    .ant-input-password {
         background-color: rgba(255, 255, 255, 0);
         border-color: #1890ff;
-        color: #fff
+        color: #fff;
+        height: 38px;
     }
 
     // 控制眼睛图标
-    .ant-input-password-icon.anticon, .ant-input-password-icon.anticon:hover {
+    .ant-input-password-icon.anticon,
+    .ant-input-password-icon.anticon:hover {
         color: #1890ff;
+    }
+
+    // 控制验证码盒子
+    .captchaBox {
+        display: flex;
+
+        .captchaImg {
+            margin-left: 20px;
+            // 可点击
+            cursor: pointer;
+        }
+    }
+
+    // 控制登录按钮
+    .loginBtn {
+        height: 38px;
+    }
+
+    // 修改密码框中被包含的的ant-input框来解决框的位置发生错乱的bug
+    .ant-input-password .ant-input {
+        height: 28px; 
     }
 }

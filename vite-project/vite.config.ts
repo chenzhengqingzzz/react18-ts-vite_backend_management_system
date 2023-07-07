@@ -1,4 +1,4 @@
-import styleImport, { AntdResolve } from 'vite-plugin-style-import';
+// import styleImport, { AntdResolve } from 'vite-plugin-style-import';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path';
@@ -7,11 +7,11 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react(),
-    styleImport({
-      resolves: [
-        AntdResolve()
-      ]
-    })
+    // styleImport({
+    //   resolves: [
+    //     AntdResolve()
+    //   ]
+    // })
   ],
   resolve: {
     alias: {

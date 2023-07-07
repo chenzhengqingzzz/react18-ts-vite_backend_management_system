@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-24 20:13:33
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-07 14:23:14
+ * @LastEditTime: 2023-07-07 15:35:27
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/router/index.tsx
  * @Description: 路由器
  * 
@@ -72,7 +72,7 @@ const routes = [
 
     {
         path: '/login',
-        element: withLazyLoadComponent(<Login/>)
+        element: <Login/>
     },
     {
         path: '/home',

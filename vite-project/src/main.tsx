@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-06-23 16:19:13
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-06-24 20:18:28
+ * @LastEditTime: 2023-07-08 18:44:02
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/main.tsx
  * @Description: 整个项目的入口文件
  *
@@ -23,11 +23,17 @@ import "@/assets/styles/global.scss";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 // import Router from '@/router';
+// 状态管理（数据流）
+import { Provider } from 'react-redux'
+import store from '@/store';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App/>
-    </BrowserRouter>
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>
+
 );

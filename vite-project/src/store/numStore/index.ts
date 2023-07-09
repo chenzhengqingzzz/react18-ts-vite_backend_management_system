@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-09 11:12:00
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-09 12:38:23
+ * @LastEditTime: 2023-07-09 17:47:48
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/store/numStore/index.ts
  * @Description: 属于num的小仓库
  * 
@@ -21,6 +21,8 @@ export default {
         },
     },
 
-    // type的统一管理：
-    increment: 'increment'
+    actionNames: {
+        // type的统一管理：
+        increment: 'increment',
+    }
 }

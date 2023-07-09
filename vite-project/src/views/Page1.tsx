@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-04 16:34:09
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-08 22:44:22
+ * @LastEditTime: 2023-07-09 12:11:28
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/views/Page1.tsx
  * @Description: Page1页面
  * 
@@ -12,7 +12,7 @@
 import { useDispatch, useSelector } from "react-redux";
 const Page1 = () => {
     // 通过useSelector来获取仓库数据
-    const {num} = useSelector((state: any) => {
+    const {num} = useSelector((state: RootState) => {
         return {num: state.num}
     })
 

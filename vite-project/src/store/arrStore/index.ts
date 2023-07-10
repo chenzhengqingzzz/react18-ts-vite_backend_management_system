@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-09 12:51:57
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-09 16:27:29
+ * @LastEditTime: 2023-07-10 16:23:18
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/store/arrStore/index.ts
  * @Description: 属于testArr的小仓库
  * 
@@ -20,6 +20,4 @@ export default {
         }
     },
 
-    // 统一管理type
-    testArrPush: 'testArrPush'
 }

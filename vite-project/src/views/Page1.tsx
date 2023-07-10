@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-04 16:34:09
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-10 18:33:48
+ * @LastEditTime: 2023-07-10 20:06:02
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/views/Page1.tsx
  * @Description: Page1页面
  * 
@@ -32,7 +32,12 @@ const Page1 = () => {
      * @return {*}
      */
     const changeNumAsync = () => {
-        dispatch({type: 'incrementAsync', data: 1})
+        // 异步的写法-redux-thunk的用法 基本格式：dispatch(异步执行的函数)
+        dispatch((dis: Function) => {
+            setTimeout(() => {
+                dis({type: 'incrementAsync', data: 1})
+            }, 1000);
+        })
     }
 
     // 对testArr属性的操作

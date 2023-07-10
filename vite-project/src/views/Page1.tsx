@@ -3,12 +3,13 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-04 16:34:09
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-10 20:06:02
+ * @LastEditTime: 2023-07-10 20:23:38
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/views/Page1.tsx
  * @Description: Page1页面
  * 
  * Copyright (c) by czqczqzzzzzz(czq), All Rights Reserved.
  */
+import numStore from "@/store/numStore";
 import { useDispatch, useSelector } from "react-redux";
 const Page1 = () => {
     // 通过useDispatch修改仓库数据
@@ -33,11 +34,7 @@ const Page1 = () => {
      */
     const changeNumAsync = () => {
         // 异步的写法-redux-thunk的用法 基本格式：dispatch(异步执行的函数)
-        dispatch((dis: Function) => {
-            setTimeout(() => {
-                dis({type: 'incrementAsync', data: 1})
-            }, 1000);
-        })
+        dispatch(numStore.asyncActions.incrementAsync)
     }
 
     // 对testArr属性的操作

@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-09 12:09:38
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-09 12:17:35
+ * @LastEditTime: 2023-07-10 19:16:17
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/types/store.d.ts
  * @Description: 声明store中的属性类型，解决vscode爆红的问题
  * 
@@ -17,5 +17,6 @@
 declare type RootState = ReturnType<typeof import('@/store').getState>;
 
 declare interface Window {
-    __REDUX_DEVTOOLS_EXTENSION__: function
+    __REDUX_DEVTOOLS_EXTENSION__: function,
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: function
 }

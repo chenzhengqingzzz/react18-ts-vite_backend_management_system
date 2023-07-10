@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-09 16:10:04
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-09 22:32:53
+ * @LastEditTime: 2023-07-10 15:02:07
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/store/numStore/reducer.ts
  * @Description: 属于num属性的reducer
  * 
@@ -39,12 +39,13 @@ let reducer = (state = defautState, action: {type: string, data: number}) => {
 
     // 【优化】上面这么写 我们每添加一个方法，都要在这里多写一句case
 
-    // 拿着action.type和actionNames的每一项进行对比 如果相等 就调用 模块名.actions.命名空间
-    for (const key in numStore.actionNames) {
-        // 这个判断条件其实就相当于 action.type == 'increment'
+    // 拿着action.type和action的每一项进行对比 如果相等 就调用 模块名.actions[方法名]
+    for (const key in numStore.actions) {
+        // 这个判断条件其实就相当于 action.type == increment
         if (action.type === key) {
             // 根据key调用actions里面对应的方法名
-            numStore.actions[numStore.actionNames[key]](state, action)
+            numStore.actions[key](state, action)
+            
         }
     }
     

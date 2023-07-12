@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-11 16:33:59
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-11 19:34:36
+ * @LastEditTime: 2023-07-12 13:51:15
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/api/index.ts
  * @Description: 统一管理请求
  * 
@@ -22,5 +22,18 @@ export const reqGetCaptcha = (): Promise<CaptchaAPIRes> => {
     return requests({
         method: 'GET',
         url: '/prod-api/captchaImage'
+    })
+}
+
+/**
+ * @description: 登录请求 是get请求 有参数
+ * @param {LoginAPIReq} params 传递过来的用户登录信息
+ * @return {Promise<LoginAPIRes>}
+ */
+export const reqLogin = (params: LoginAPIReq): Promise<LoginAPIRes> => {
+    return requests({
+        method: 'GET',
+        url: '/prod-api/login',
+        data: params
     })
 }

@@ -3,7 +3,7 @@
  * @Email: tenchenzhengqing@qq.com
  * @Date: 2023-07-07 13:53:11
  * @LastEditors: 陈正清MacPro
- * @LastEditTime: 2023-07-11 21:07:37
+ * @LastEditTime: 2023-07-12 15:28:15
  * @FilePath: /react18+ts+vite后台管理系统/vite-project/src/views/Login/index.tsx
  * @Description: 登录组件（Login）
  * 
@@ -11,12 +11,13 @@
  */
 
 import { ChangeEvent, useEffect, useState } from 'react';
-import { Input, Space, Button } from 'antd'
+import { Input, Space, Button, message } from 'antd'
 import styles from './login.module.scss'
 import initLoginBackground from './init.ts';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './login.less';
-import { reqGetCaptcha } from '@/api/index.ts';
+import { reqGetCaptcha, reqLogin } from '@/api/index.ts';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
 
@@ -34,6 +35,8 @@ const Login: React.FC = () => {
         getCaptchaImg()
     }, [])
 
+    // 重定向路由Hook
+    let navigateTo = useNavigate()
 
     // ---------冗余的代码---------
     // // 存取用户输入的信息
@@ -83,8 +86,32 @@ const Login: React.FC = () => {
      * @description: 点击登录按钮的事件函数
      * @return {*}
      */
-    const handleLogin = () => {
+    const handleLogin =  async() => {
         console.log(username, password, captcha);
+        // 验证是否有空值
+        if (!username.trim() || !password.trim() || !captcha.trim()) {
+            message.warning('请完整输入登录信息！')
+            return
+        }
+        // 发起登录请求
+        let LoginAPIRes = await reqLogin({
+            username: username as string,
+            password: password as string,
+            code: captcha as string,
+            uuid: localStorage.getItem('uuid') as string
+        })
+        if (LoginAPIRes.code === 200) {
+            // 1. 提示登录成功
+            message.success('登录成功啦！');
+            // 2. 保存token
+            localStorage.setItem('react18+TS_token', LoginAPIRes.token)
+            // 3. 跳转Page1组件
+            navigateTo('/page1')
+            // 4. 删除uuid
+            localStorage.removeItem('uuid')
+        }else{
+            message.error(LoginAPIRes.msg)
+        }
         
     }
 
